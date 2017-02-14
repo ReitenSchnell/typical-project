@@ -16,6 +16,6 @@ def calculate_statistics(tag):
 
 
 def get_top_tags(tags_map, top_n):
-    sorted_tags = sorted([(value, key) for (key, value) in tags_map.items()])
-    top_tags = sorted_tags[-top_n:]
+    sorted_tags = sorted([(value, key) for (key, value) in tags_map.items()], reverse=True)
+    top_tags = sorted_tags[:top_n]
     return [tag for _, tag in top_tags]
