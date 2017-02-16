@@ -11,7 +11,8 @@ def get_questions_by_tag(tags):
         response = future.result()
         json = response.json()
         items = json['items']
-        [tags.append(item['tags']) for item in items]
+        for item in items:
+            tags.append(item['tags'])
     return tags
 
 

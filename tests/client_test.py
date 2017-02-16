@@ -17,5 +17,5 @@ def test_returns_tags_inside_items_of_response():
         m.get('https://api.stackexchange.com/2.2/questions?site=stackoverflow&tagged=%s'%current_tags[1],
               json=json_mock2)
         result = so_client.get_questions_by_tag(current_tags)
-        assert result == [item11_tags, item12_tags, item21_tags]
+        assert sorted(result) == sorted([item11_tags, item21_tags, item12_tags])
 
