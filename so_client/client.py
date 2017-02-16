@@ -1,12 +1,17 @@
-import requests
+import concurrent.futures as cf
+import requests_futures.sessions as rf
 
 
-def get_questions_by_tag(tag):
-    url = 'https://api.stackexchange.com/2.2/questions?site=stackoverflow&tagged=%s' % tag
-    response = requests.get(url)
-    json = response.json()
-    items = json['items']
-    tags = [item['tags'] for item in items]
+def get_questions_by_tag(tags):
+    url = 'https://api.stackexchange.com/2.2/questions?site=stackoverflow&tagged={}'
+    session = rf.FuturesSession()
+    futures = [session.get(url.format(tag)) for tag in tags]
+    tags = []
+    for future in cf.as_completed(futures):
+        response = future.result()
+        json = response.json()
+        items = json['items']
+        [tags.append(item['tags']) for item in items]
     return tags
 
 

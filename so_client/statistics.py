@@ -1,17 +1,17 @@
 import so_client
 
 
-def calculate_statistics(tag):
-    tags = so_client.get_questions_by_tag(tag)
+def calculate_statistics(tags):
+    so_tags = so_client.get_questions_by_tag(tags)
     tags_dict = {}
-    for tag_list in tags:
+    for tag_list in so_tags:
         for current_tag in tag_list:
+            if current_tag in tags:
+                continue
             if current_tag in tags_dict:
                 tags_dict[current_tag] += 1
             else:
                 tags_dict[current_tag] = 1
-    if tag in tags_dict:
-        del tags_dict[tag]
     return tags_dict
 
 

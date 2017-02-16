@@ -10,7 +10,8 @@ Example: pip freeze >requirements.txt
 pip show <package-name>
 Example: pip show requests
 3. Run code quality check
-pylint .\so_client\client.py
+pylint [package_name]
+Example: pylint so_client
 3.1 Generate code quality config
 pylint --generate-rcfile > .pylintrc
 4. Run tests in folder
