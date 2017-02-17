@@ -1,4 +1,7 @@
+import logging
 import so_client
+
+logger = logging.getLogger('so_client')
 
 
 def calculate_statistics(tags):
@@ -12,6 +15,7 @@ def calculate_statistics(tags):
                 tags_dict[current_tag] += 1
             else:
                 tags_dict[current_tag] = 1
+    logger.info('Got %i tags in statistics', len(tags_dict))
     return tags_dict
 
 
