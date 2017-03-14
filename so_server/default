@@ -1,0 +1,11 @@
+//config for nginx
+server {
+	listen 80;
+	server_name localhost;
+
+	location / {
+		root /var/www/uwsgi;
+        uwsgi_pass 127.0.0.1:8080;
+        include uwsgi_params;
+	}	
+}

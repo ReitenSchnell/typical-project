@@ -33,3 +33,27 @@
 * Activate virtual env `venv\Scripts\activate`
 * Deactivate virtual env 'venv\Scripts\deactivate`
 
+#####Uwsgi
+* Start with parameters for nginx `uwsgi --socket 127.0.0.1:8080 --plugins=python34 --chdir=/work --file=app.py &`
+
+#####Nginx
+* Test config `service nginx configtest`
+* Restart `service nginx restart`
+
+#####Docker
+* Current IP address `docker-machine ip`
+* Building an image, docker file 
+`FROM debian:latest`
+`EXPOSE 80`
+`RUN apt-get update && apt-get install -y \
+        python3 \
+        python3-pip \
+        nginx \
+		curl \
+		man \
+		make \
+		uwsgi \
+		uwsgi-plugin-python3`
+* Building an image: `docker build -t <name:version> <path to docker file>`
+* Creating conatiner based on image: `docker run -it -p 8080:8080 -p 80:80 -v /$(pwd)/work:/work --name deb pydeb`
+
