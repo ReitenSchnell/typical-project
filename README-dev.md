@@ -26,6 +26,7 @@
 #####Makefile
 * To use it - install make http://gnuwin32.sourceforge.net/packages/make.htm
 * To see possible commands: `make help`
+* Running just `make` will call first command in the file
 
 #####Virtual environment
 * Install virtualenv `pip install virtualenv`
@@ -44,20 +45,14 @@
 #####Docker
 * Current IP address `docker-machine ip`
 * Go into console of running container `docker exec -it <container_id> /bin/bash`
-* Building an image, docker file 
-`FROM debian:latest`
-`EXPOSE 80`
-`RUN apt-get update && apt-get install -y \
-        python3 \
-        python3-pip \
-        nginx \
-		curl \
-		man \
-		make \
-		uwsgi \
-		uwsgi-plugin-python3`
 * Building an image: `docker build -t <name:version> <path to docker file>`
-* Creating conatiner based on image: `docker run -it -p 8080:8080 -p 80:80 -v /$(pwd)/work:/work --name deb pydeb`
+*Example*: `docker build -t pywebdeb dockerfile.os`
+* Creating container based on image: `docker run -it -p 8080:8080 -p 80:80 -v /$(pwd)/work:/work --name deb pywebdeb`
+* Get container logs: `docker logs -f <container_name>`
+* Get exit code of container: `docker wait <container_name>`
+* Starting docker-compose: `docker-compose up -d -p <project_name>`
+* Stopping docker-compose and removing containers: `docker-compose down`
+
 
 #####Package distribution
 * From the root folder of the project `python setup.py sdist`
