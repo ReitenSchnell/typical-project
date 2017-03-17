@@ -1,0 +1,7 @@
+from pywebdeb:latest
+
+WORKDIR /app
+
+ADD /tests/so_server/test.sh /app/test.sh
+
+CMD ["bash", "test.sh"]

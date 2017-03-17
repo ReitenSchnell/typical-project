@@ -1,0 +1,15 @@
+sut:
+ build: .
+ dockerfile: dockerfile.test
+ links:
+  - web
+web:
+ build: .
+ dockerfile: dockerfile
+ links: 
+  - redis
+ ports:
+  - "80:80"
+ tty: true
+redis:
+ image: redis 
