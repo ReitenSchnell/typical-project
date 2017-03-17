@@ -1,10 +1,8 @@
 import logging
 
 from .client import (get_questions_by_tag)
-from .statistics import (
-    get_top_tags,
-    calculate_statistics
-)
+from .statistics import (calculate_statistics, get_top_tags)
+
 
 def setup_logging():
     logger = logging.getLogger('so_client')

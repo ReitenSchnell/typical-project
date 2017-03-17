@@ -1,5 +1,6 @@
-import so_client
 import requests_mock
+
+import so_parser
 
 tag = 'python'
 
@@ -16,6 +17,6 @@ def test_returns_tags_inside_items_of_response():
               json=json_mock1)
         m.get('https://api.stackexchange.com/2.2/questions?site=stackoverflow&tagged=%s'%current_tags[1],
               json=json_mock2)
-        result = so_client.get_questions_by_tag(current_tags)
+        result = so_parser.get_questions_by_tag(current_tags)
         assert sorted(result) == sorted([item11_tags, item21_tags, item12_tags])
 

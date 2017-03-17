@@ -1,11 +1,11 @@
 import logging
-import so_client
+import so_parser
 
 logger = logging.getLogger('so_client')
 
 
 def calculate_statistics(tags):
-    so_tags = so_client.get_questions_by_tag(tags)
+    so_tags = so_parser.get_questions_by_tag(tags)
     tags_dict = {}
     for tag_list in so_tags:
         for current_tag in tag_list:

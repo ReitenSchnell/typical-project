@@ -1,21 +1,17 @@
-ENV = env
-FOO = $(ENV)/bin
 TESTDIR = tests
-MODULE_NAME = so_client
+MODULE_NAME = so_parser
 
-$(FOO):
-	virtualenv $(ENV)
+.PHONY: environ
+environ: $(PIP) requirements.txt requirements-dev.txt
+	pip install -r requirements.txt
+	pip install -r requirements-dev.txt
 
 .PHONY: help
 help:
 	@echo "make test             # run tests"
 	@echo "make coverage         # run tests with coverage report"
 	@echo "make style            # check linting with pylint"
-
-.PHONY: environ
-environ: $(PIP) requirements.txt requirements-dev.txt
-	pip install -r requirements.txt
-	pip install -r requirements-dev.txt
+	@echo "make all              # check style and coverage"
 
 .PHONY: test
 test: environ
@@ -28,5 +24,8 @@ coverage: environ
 .PHONY: style
 style: environ
 	pylint $(MODULE_NAME)
+
+.PHONY: all
+all: style coverage
 
 

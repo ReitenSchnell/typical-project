@@ -14,14 +14,14 @@
 
 #####Code quality 
 * Check `pylint [package_name]`
-*Example*: `pylint so_client`
+*Example*: `pylint so_parser`
 * Generate code quality config `pylint --generate-rcfile > .pylintrc`
 
 #####Unit tests
 * Run tests in folder `python -m pytest [folder_path] -v`
 *Example*: `python -m pytest .\tests -v`
 * Run tests with coverage `python -m pytest [folder_path] -v --cov=[module_to_cover]`
-*Example*: `python -m pytest .\tests -v --cov=so_client`
+*Example*: `python -m pytest .\tests -v --cov=so_parser`
 
 #####Makefile
 * To use it - install make http://gnuwin32.sourceforge.net/packages/make.htm
