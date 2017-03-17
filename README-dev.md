@@ -35,6 +35,7 @@
 
 #####Uwsgi
 * Start with parameters for nginx `uwsgi --socket 127.0.0.1:8080 --plugins=python34 --chdir=/work --file=app.py &`
+* Start with ini file `uwsgi --ini /work/uwsgi.ini &`
 
 #####Nginx
 * Test config `service nginx configtest`
@@ -42,6 +43,7 @@
 
 #####Docker
 * Current IP address `docker-machine ip`
+* Go into console of running container `docker exec -it <container_id> /bin/bash`
 * Building an image, docker file 
 `FROM debian:latest`
 `EXPOSE 80`
@@ -56,4 +58,7 @@
 		uwsgi-plugin-python3`
 * Building an image: `docker build -t <name:version> <path to docker file>`
 * Creating conatiner based on image: `docker run -it -p 8080:8080 -p 80:80 -v /$(pwd)/work:/work --name deb pydeb`
+
+#####Package distribution
+* From the root folder of the project `python setup.py sdist`
 
