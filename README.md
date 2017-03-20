@@ -16,7 +16,8 @@ It has `uwsgi.ini` file with uwsgi settings and `nginx-site` with nginx settings
 
 ## tests
 Contains unit tests for so_parser with support of `pytest-catchlog`, `requests-mock` and `pytest-mock`
-Contains web integration tests for so_server - deployed to isolated docker container and run against http
+Contains integration tests for so_server with support of `webtest`
+Contains end-to-end tests for so_server - deployed to isolated docker container and run against http requests
 
 ## Development
 `.pylintrc` contains rules for linter
